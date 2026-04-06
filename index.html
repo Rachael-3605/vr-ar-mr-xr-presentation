@@ -1,16 +1,1120 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>VR, AR, MR & XR Final Presentation</title>
-  <style>
-    body { margin: 0; background: #1A2E5A; font-family: Calibri, sans-serif; }
-    h1 { color: white; text-align: center; padding: 20px; font-size: 24px; }
-    iframe { display: block; margin: 0 auto 30px; border: none;
-             width: 90%; height: 80vh; border-radius: 8px; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VR, AR, MR & XR — Final Presentation</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f3d;
+    --navy-mid: #1a3160;
+    --teal: #0d6e6e;
+    --teal-light: #e8f5f5;
+    --purple: #4a3580;
+    --purple-light: #ede9f8;
+    --rust: #7a2e1e;
+    --rust-light: #f7ece9;
+    --gold: #8a6a00;
+    --gold-light: #fdf6e3;
+    --crimson: #6b1a2a;
+    --crimson-light: #fce8ec;
+    --slate: #2d4a6e;
+    --slate-light: #e8eef6;
+    --text: #1a1a2e;
+    --muted: #5a6070;
+    --light: #f4f5f7;
+    --white: #ffffff;
+    --border: #d0d7e3;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(15,31,61,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 0 2rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  nav .logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  nav ul li a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.75rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+  }
+
+  nav ul li a:hover {
+    color: var(--white);
+    background: rgba(255,255,255,0.08);
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(13,110,110,0.06) 0%, transparent 70%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+  }
+
+  .hero-eyebrow {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+    padding: 0.4rem 1rem;
+    border-radius: 2px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 900;
+    color: var(--navy);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 span {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--navy);
+    opacity: 0.4;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--muted);
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+  }
+
+  .hero-pills {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .pill {
+    padding: 0.5rem 1.25rem;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .pill-vr { background: var(--purple); color: #fff; }
+  .pill-ar { background: var(--teal); color: #fff; }
+  .pill-mr { background: var(--rust); color: #fff; }
+  .pill-xr { background: var(--slate); color: #fff; }
+
+  /* SECTION WRAPPER */
+  section {
+    padding: 5rem 2rem;
+  }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* SECTION HEADERS */
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+    line-height: 1.15;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 3rem;
+  }
+
+  /* LIGHT SECTION */
+  .section-light {
+    background: var(--light);
+  }
+
+  .section-white {
+    background: var(--white);
+  }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 100px;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--navy), var(--border), transparent);
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    align-items: start;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .timeline-year {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--navy);
+    text-align: right;
+    padding-right: 1.5rem;
+    position: relative;
+    line-height: 1.3;
+  }
+
+  .timeline-year::after {
+    content: '';
+    position: absolute;
+    right: -7px;
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--navy);
+    border: 3px solid var(--light);
+    box-shadow: 0 0 0 2px var(--navy);
+  }
+
+  .timeline-body {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .timeline-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--navy);
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* CARDS GRID */
+  .cards-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .card {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--white);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+  }
+
+  .card-header {
+    padding: 1.25rem 1.5rem 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .card-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .card-head-text {}
+
+  .card-title {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--navy);
+  }
+
+  .card-sub {
+    font-size: 0.78rem;
+    font-style: italic;
+    color: var(--muted);
+    margin-top: 0.1rem;
+  }
+
+  .card-tags {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0 1.5rem 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+  }
+
+  .tag-vr { background: var(--purple); color: #fff; }
+  .tag-ar { background: var(--teal); color: #fff; }
+  .tag-mr { background: var(--rust); color: #fff; }
+  .tag-xr { background: var(--slate); color: #fff; }
+
+  .card-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0 1.5rem;
+  }
+
+  .card-body {
+    padding: 1rem 1.5rem 1.5rem;
+  }
+
+  .card-body ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .card-body ul li {
+    font-size: 0.875rem;
+    color: var(--muted);
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .card-body ul li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--navy);
+    font-weight: 700;
+  }
+
+  /* CARD THEMES */
+  .card-purple .card-header { background: var(--purple-light); border-bottom: 3px solid var(--purple); }
+  .card-teal .card-header { background: var(--teal-light); border-bottom: 3px solid var(--teal); }
+  .card-rust .card-header { background: var(--rust-light); border-bottom: 3px solid var(--rust); }
+
+  /* APPLICATIONS TABLE */
+  .app-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  }
+
+  .app-table thead tr {
+    background: var(--navy);
+    color: var(--white);
+  }
+
+  .app-table thead th {
+    padding: 1rem 1.25rem;
+    text-align: left;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .app-table thead th:first-child { border-radius: 0; }
+
+  .app-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+
+  .app-table tbody tr:hover { background: var(--light); }
+
+  .app-table tbody td {
+    padding: 0.9rem 1.25rem;
+    vertical-align: top;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+
+  .app-table tbody td:first-child {
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 0.9rem;
+  }
+
+  /* BIBLICAL */
+  .bible-section {
+    background: linear-gradient(135deg, #0f1f3d 0%, #1a1040 100%);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bible-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 20% 50%, rgba(106,26,42,0.2) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 80% at 80% 50%, rgba(45,74,110,0.2) 0%, transparent 60%);
+  }
+
+  .bible-section .section-label { color: rgba(255,255,255,0.4); }
+  .bible-section .section-title { color: var(--white); }
+  .bible-section .section-subtitle { color: rgba(255,255,255,0.5); }
+
+  .bible-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .bible-card {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .bible-card-header {
+    padding: 1.25rem 1.5rem 1rem;
+  }
+
+  .bible-card-icon { font-size: 1.4rem; margin-bottom: 0.5rem; }
+
+  .bible-card-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--white);
+    margin-bottom: 0.2rem;
+  }
+
+  .bible-card-tagline {
+    font-size: 0.78rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 0.75rem;
+  }
+
+  .bible-card-ref {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-family: 'DM Mono', monospace;
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .bible-card-quote {
+    padding: 1rem 1.5rem;
+    font-size: 0.82rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .bible-card-body {
+    padding: 1rem 1.5rem 1.5rem;
+  }
+
+  .bible-card-body ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .bible-card-body ul li {
+    font-size: 0.84rem;
+    color: rgba(255,255,255,0.65);
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .bible-card-body ul li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: rgba(255,255,255,0.4);
+    font-weight: 700;
+  }
+
+  .bible-babel { background: rgba(106,26,42,0.25); }
+  .bible-babel .bible-card-header { background: rgba(106,26,42,0.35); }
+  .bible-babel .bible-card-ref { background: var(--crimson); color: #fff; }
+
+  .bible-heaven { background: rgba(138,106,0,0.15); }
+  .bible-heaven .bible-card-header { background: rgba(138,106,0,0.25); }
+  .bible-heaven .bible-card-ref { background: var(--gold); color: #fff; }
+
+  .bible-steward { background: rgba(45,74,110,0.25); }
+  .bible-steward .bible-card-header { background: rgba(45,74,110,0.35); }
+  .bible-steward .bible-card-ref { background: var(--slate); color: #fff; }
+
+  .bible-verse {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.03);
+  }
+
+  .bible-verse p {
+    font-style: italic;
+    color: rgba(255,255,255,0.7);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+  }
+
+  .bible-verse strong {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.4);
+    font-style: normal;
+    letter-spacing: 0.08em;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* REFERENCES */
+  .ref-section { background: var(--white); }
+
+  .ref-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .ref-item {
+    padding: 1rem 1.25rem;
+    background: var(--light);
+    border-radius: 8px;
+    border-left: 3px solid var(--navy);
+    font-size: 0.84rem;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+
+  .ref-item a {
+    color: var(--teal);
+    word-break: break-all;
+  }
+
+  /* THANK YOU */
+  .thankyou {
+    background: var(--white);
+    text-align: center;
+    padding: 8rem 2rem;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+  }
+
+  .thankyou::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(13,110,110,0.05) 0%, transparent 70%);
+  }
+
+  .thankyou-content { position: relative; z-index: 1; }
+
+  .thankyou h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .thankyou p {
+    color: var(--muted);
+    font-size: 1.1rem;
+    font-style: italic;
+    letter-spacing: 0.06em;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #080f1e;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.2);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  /* SOURCES ROW */
+  .sources {
+    margin-top: 2rem;
+    padding: 0.75rem 1rem;
+    background: rgba(0,0,0,0.04);
+    border-radius: 6px;
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 700px) {
+    nav ul { display: none; }
+    .timeline::before { left: 60px; }
+    .timeline-item { grid-template-columns: 60px 1fr; gap: 1rem; }
+    .timeline-year { font-size: 1rem; }
+    .app-table { font-size: 0.75rem; }
+    .app-table thead th, .app-table tbody td { padding: 0.6rem 0.75rem; }
+  }
+</style>
 </head>
 <body>
-  <h1>VR, AR, MR & XR — Final Presentation</h1>
-  <iframe src="presentation.pdf"></iframe>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">VR · AR · MR · XR</div>
+  <ul>
+    <li><a href="#foundations">Foundations</a></li>
+    <li><a href="#modern">Modern Era</a></li>
+    <li><a href="#applications">Applications</a></li>
+    <li><a href="#future">Future</a></li>
+    <li><a href="#biblical">Biblical</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Final Presentation · Innovation & Technology</div>
+    <h1>VR, AR, <span>MR</span> & XR</h1>
+    <p class="hero-subtitle">From 1838 to the Metaverse — A Complete History</p>
+    <div class="hero-pills">
+      <span class="pill pill-vr">Virtual Reality</span>
+      <span class="pill pill-ar">Augmented Reality</span>
+      <span class="pill pill-mr">Mixed Reality</span>
+      <span class="pill pill-xr">Extended Reality</span>
+    </div>
+  </div>
+</section>
+
+<!-- PART 1: FOUNDATIONS -->
+<section class="section-light" id="foundations">
+  <div class="section-inner">
+    <div class="section-label">Part 1</div>
+    <h2 class="section-title">Early Foundations & Naming</h2>
+    <p class="section-subtitle">1838 – 1994 · The pioneers who gave us the language of immersive technology</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">1838</div>
+        <div class="timeline-body">
+          <div class="timeline-title">Stereoscope Invented</div>
+          <div class="timeline-desc">Sir Charles Wheatstone — binocular vision concept; ancestor of VR depth perception</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1962</div>
+        <div class="timeline-body">
+          <div class="timeline-title">Sensorama</div>
+          <div class="timeline-desc">Morton Heilig — first VR-like machine with 3D display, sound, scent, and fans</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1968</div>
+        <div class="timeline-body">
+          <div class="timeline-title">The Sword of Damocles</div>
+          <div class="timeline-desc">Ivan Sutherland & Bob Sproull (MIT) — first head-mounted display with head tracking</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1974</div>
+        <div class="timeline-body">
+          <div class="timeline-title">Videoplace</div>
+          <div class="timeline-desc">Myron Krueger — interactive artificial reality lab; forerunner of AR interaction</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1987</div>
+        <div class="timeline-body">
+          <div class="timeline-title">Term: 'Virtual Reality'</div>
+          <div class="timeline-desc">Jaron Lanier (VPL Research) — officially coined the term 'virtual reality'</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1992</div>
+        <div class="timeline-body">
+          <div class="timeline-title">Term: 'Augmented Reality'</div>
+          <div class="timeline-desc">Tom Caudell & David Mizell (Boeing) — coined the term in a research paper</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1994</div>
+        <div class="timeline-body">
+          <div class="timeline-title">Reality–Virtuality Continuum</div>
+          <div class="timeline-desc">Paul Milgram & Fumio Kishino — defined the spectrum from real to fully virtual</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sources">Sources: Marr (2021) · HQ Software Lab (2026) · TechCrunch (2023) · VR Expert (2022)</div>
+  </div>
+</section>
+
+<!-- PART 2: MODERN ERA -->
+<section class="section-white" id="modern">
+  <div class="section-inner">
+    <div class="section-label">Part 2</div>
+    <h2 class="section-title">The Modern Era</h2>
+    <p class="section-subtitle">1998 – 2020s · When XR became consumer reality</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">1998</div>
+        <div class="timeline-body">
+          <div class="timeline-title">AR in Sports Broadcasting</div>
+          <div class="timeline-desc">Sportvision — first yellow yard marker overlaid on a live NFL broadcast</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2010</div>
+        <div class="timeline-body">
+          <div class="timeline-title">Oculus Rift Prototype</div>
+          <div class="timeline-desc">Palmer Luckey (age 18) — reignited global interest in VR; Kickstarter raised $2.4M</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2014</div>
+        <div class="timeline-body">
+          <div class="timeline-title">Facebook & Google Enter XR</div>
+          <div class="timeline-desc">Facebook acquires Oculus for ~$2B; Google launches Cardboard and Glass AR glasses</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2015</div>
+        <div class="timeline-body">
+          <div class="timeline-title">AR Goes Mainstream</div>
+          <div class="timeline-desc">Snapchat launches face filter Lenses; millions experience AR daily on smartphones</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2016</div>
+        <div class="timeline-body">
+          <div class="timeline-title">Microsoft HoloLens</div>
+          <div class="timeline-desc">First major Mixed Reality headset — holographic computing anchored to real space</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2016</div>
+        <div class="timeline-body">
+          <div class="timeline-title">Pokémon GO</div>
+          <div class="timeline-desc">Niantic — AR game reaches 500M+ downloads; largest mass AR event in history</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2020s</div>
+        <div class="timeline-body">
+          <div class="timeline-title">XR Across Industries</div>
+          <div class="timeline-desc">VR/AR/MR adopted in healthcare, education, manufacturing, law enforcement, and more</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sources">Sources: Marr (2021) · Capsule Sight (2023) · Verizon (2022) · HQ Software Lab (2026)</div>
+  </div>
+</section>
+
+<!-- PART 3: APPLICATIONS -->
+<section class="section-light" id="applications">
+  <div class="section-inner">
+    <div class="section-label">Part 3</div>
+    <h2 class="section-title">Current Commercial Applications</h2>
+    <p class="section-subtitle">As of 2024–2025 · Where XR technologies are deployed today</p>
+
+    <div style="overflow-x:auto;">
+      <table class="app-table">
+        <thead>
+          <tr>
+            <th>Industry</th>
+            <th><span class="pill pill-vr" style="font-size:0.7rem;padding:0.25rem 0.75rem;">VR</span></th>
+            <th><span class="pill pill-ar" style="font-size:0.7rem;padding:0.25rem 0.75rem;">AR</span></th>
+            <th><span class="pill pill-mr" style="font-size:0.7rem;padding:0.25rem 0.75rem;">MR</span></th>
+            <th><span class="pill pill-xr" style="font-size:0.7rem;padding:0.25rem 0.75rem;">XR</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Healthcare</td>
+            <td>Surgical training, PTSD therapy, pain management</td>
+            <td>Vein visualization, AR-guided surgery</td>
+            <td>3D organ holograms, surgical planning</td>
+            <td>Stroke rehab, cognitive therapy</td>
+          </tr>
+          <tr>
+            <td>Education</td>
+            <td>Virtual field trips, vocational skills training</td>
+            <td>Interactive textbooks, lab simulations</td>
+            <td>Holographic anatomy (Case Western)</td>
+            <td>Immersive STEM learning platforms</td>
+          </tr>
+          <tr>
+            <td>Military</td>
+            <td>Combat and flight simulation training</td>
+            <td>Heads-up display overlays</td>
+            <td>Battlefield holographic mapping</td>
+            <td>Lockheed Martin training systems</td>
+          </tr>
+          <tr>
+            <td>Manufacturing</td>
+            <td>Safety training, factory layout design</td>
+            <td>AR assembly line instructions</td>
+            <td>Boeing/Ford HoloLens assembly guidance</td>
+            <td>Full digital twin environments</td>
+          </tr>
+          <tr>
+            <td>Retail</td>
+            <td>Virtual showrooms and stores</td>
+            <td>Try-on apps (Warby Parker, IKEA Place)</td>
+            <td>In-store holographic product demos</td>
+            <td>End-to-end immersive shopping</td>
+          </tr>
+          <tr>
+            <td>Entertainment</td>
+            <td>Gaming, virtual concerts, VR film</td>
+            <td>Pokémon GO, Snapchat face filters</td>
+            <td>Location-based MR experiences</td>
+            <td>Theme parks (Disney, Universal)</td>
+          </tr>
+          <tr>
+            <td>Architecture</td>
+            <td>Immersive building walkthroughs</td>
+            <td>On-site design overlays</td>
+            <td>Holograms projected on physical blueprints</td>
+            <td>Full project visualization suites</td>
+          </tr>
+          <tr>
+            <td>Remote Work</td>
+            <td>Virtual meeting rooms (Horizon Workrooms)</td>
+            <td>AR annotation for remote assistance</td>
+            <td>Microsoft Mesh shared workspaces</td>
+            <td>Cross-platform collaborative spaces</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sources">Applications listed reflect current commercial deployments as of 2024–2025.</div>
+  </div>
+</section>
+
+<!-- PART 4: FUTURE -->
+<section class="section-white" id="future">
+  <div class="section-inner">
+    <div class="section-label">Part 4</div>
+    <h2 class="section-title">Future Commercial Applications</h2>
+    <p class="section-subtitle">Emerging research, prototypes, and near-term projections as of 2025</p>
+
+    <div class="cards-3">
+      <!-- Become a Character -->
+      <div class="card">
+        <div class="card-header card-purple" style="background:#ede9f8;border-bottom:3px solid #4a3580;">
+          <div class="card-icon">🎬</div>
+          <div class="card-head-text">
+            <div class="card-title">Become a Character</div>
+          </div>
+        </div>
+        <div class="card-tags">
+          <span class="tag tag-vr">VR</span>
+          <span class="tag tag-mr">MR</span>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-body">
+          <ul>
+            <li>Step inside your favourite films, shows, and games as a playable character</li>
+            <li>Full-body avatar mapping using motion capture and AI</li>
+            <li>Live interactive narratives — your choices shape the story</li>
+            <li>Virtual fan experiences: walk Hogwarts, explore Middle-earth</li>
+            <li>Collaborative storytelling with friends across the world</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Nonprofit -->
+      <div class="card">
+        <div class="card-header" style="background:#f7ece9;border-bottom:3px solid #7a2e1e;">
+          <div class="card-icon">❤️</div>
+          <div class="card-head-text">
+            <div class="card-title">Nonprofit & Social Impact</div>
+          </div>
+        </div>
+        <div class="card-tags">
+          <span class="tag tag-xr">XR</span>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-body">
+          <ul>
+            <li>Immersive empathy experiences — see the world through another's eyes</li>
+            <li>Virtual disaster simulations for humanitarian aid training</li>
+            <li>Remote medical assistance in underserved communities via AR</li>
+            <li>XR-powered fundraising: donors experience impact firsthand</li>
+            <li>Accessibility tools for people with disabilities in daily life</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Communication -->
+      <div class="card">
+        <div class="card-header" style="background:#e8eef6;border-bottom:3px solid #2d4a6e;">
+          <div class="card-icon">🌐</div>
+          <div class="card-head-text">
+            <div class="card-title">Universal Communication</div>
+          </div>
+        </div>
+        <div class="card-tags">
+          <span class="tag tag-ar">AR</span>
+          <span class="tag tag-mr">MR</span>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-body">
+          <ul>
+            <li>Real-time spoken language translation overlaid via AR glasses</li>
+            <li>AI-powered Sign Language interpretation (ASL, BSL, Auslan, and more)</li>
+            <li>Live captions and visual cues for the Deaf and hard-of-hearing community</li>
+            <li>Cross-cultural business meetings with zero language barriers</li>
+            <li>Educational tools teaching any language through immersive AR</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sources" style="text-align:center;font-style:italic;">
+      The future of XR is limited only by imagination — and the technology is closer than you think.
+    </div>
+  </div>
+</section>
+
+<!-- PART 5: BIBLICAL -->
+<section class="bible-section" id="biblical">
+  <div class="section-inner">
+    <div class="section-label">Part 5</div>
+    <h2 class="section-title">Biblical Implications</h2>
+    <p class="section-subtitle">Wisdom for a Technological Age</p>
+
+    <div class="bible-cards">
+      <!-- Babel -->
+      <div class="bible-card bible-babel">
+        <div class="bible-card-header">
+          <div class="bible-card-icon">🏛️</div>
+          <div class="bible-card-title">The Tower of Babel</div>
+          <div class="bible-card-tagline">Unity without God</div>
+          <span class="bible-card-ref">Genesis 11:4, 6</span>
+        </div>
+        <div class="bible-card-quote">
+          "Come, let us build ourselves a city and a tower... nothing they plan will be impossible for them."
+        </div>
+        <div class="bible-card-body">
+          <ul>
+            <li>Humanity united by technology — yet pursuing self-glory over God</li>
+            <li>God's response: division — a warning about pride-driven innovation</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Heaven -->
+      <div class="bible-card bible-heaven">
+        <div class="bible-card-header">
+          <div class="bible-card-icon">✝️</div>
+          <div class="bible-card-title">New Heaven & New Earth</div>
+          <div class="bible-card-tagline">Technology in eternity?</div>
+          <span class="bible-card-ref">Rev. 21:1–5; Isaiah 65:17</span>
+        </div>
+        <div class="bible-card-quote">
+          "He will wipe every tear... There will be no more death or mourning or crying or pain."
+        </div>
+        <div class="bible-card-body">
+          <ul>
+            <li>God creates a perfected reality — the ultimate immersive experience</li>
+            <li>XR offers a glimpse of humanity's longing for a renewed, better world</li>
+            <li>True restoration comes from God, not technology (Rev. 21:5)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Stewardship -->
+      <div class="bible-card bible-steward">
+        <div class="bible-card-header">
+          <div class="bible-card-icon">⚖️</div>
+          <div class="bible-card-title">Stewardship of Time & Money</div>
+          <div class="bible-card-tagline">Redeeming what God gives</div>
+          <span class="bible-card-ref">Eph. 5:15–16; Luke 16:11; Matt. 6:21</span>
+        </div>
+        <div class="bible-card-quote">
+          "Be very careful how you live... making the most of every opportunity."
+        </div>
+        <div class="bible-card-body">
+          <ul>
+            <li>Excessive XR use risks wasting time God calls us to redeem</li>
+            <li>"Where your treasure is, there your heart will be also" (Matt. 6:21)</li>
+            <li>If untrustworthy with money now, who will trust you with more? (Luke 16:11)</li>
+            <li>Ask: does this technology serve God's kingdom or distract from it?</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="bible-verse">
+      <p>"For we are God's handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do."</p>
+      <strong>Ephesians 2:10 · All Scripture from the NIV</strong>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCES -->
+<section class="ref-section" id="references">
+  <div class="section-inner">
+    <div class="section-label">References</div>
+    <h2 class="section-title">APA 7th Edition</h2>
+    <p class="section-subtitle">All URLs verified and accurate as of April 2025.</p>
+
+    <div class="ref-list">
+      <div class="ref-item">Caudell, T., & Mizell, D. (1992). Augmented reality: An application of heads-up display technology to manual manufacturing processes. <em>Proceedings of the Twenty-Fifth Hawaii International Conference on System Sciences, 2</em>, 659–669. <a href="https://doi.org/10.1109/HICSS.1992.183317">https://doi.org/10.1109/HICSS.1992.183317</a></div>
+      <div class="ref-item">Capsule Sight. (2023, March 17). <em>The history of mixed reality.</em> <a href="https://capsulesight.com/vrglasses/the-history-of-mixed-reality/">https://capsulesight.com/vrglasses/the-history-of-mixed-reality/</a></div>
+      <div class="ref-item">HQ Software Lab. (2026, February 27). <em>A brief history of AR and VR: Virtual reality timeline.</em> <a href="https://hqsoftwarelab.com/blog/the-history-of-ar-and-vr-a-timeline-of-notable-milestones/">https://hqsoftwarelab.com/blog/the-history-of-ar-and-vr-a-timeline-of-notable-milestones/</a></div>
+      <div class="ref-item">Marr, B. (2021, July 13). <em>The fascinating history and evolution of extended reality (XR) — covering AR, VR and MR.</em> Bernard Marr & Co. <a href="https://bernardmarr.com/the-fascinating-history-and-evolution-of-extended-reality-xr-covering-ar-vr-and-mr/">https://bernardmarr.com/...</a></div>
+      <div class="ref-item">Milgram, P., & Kishino, F. (1994). A taxonomy of mixed reality visual displays. <em>IEICE Transactions on Information and Systems, E77-D</em>(12), 1321–1329.</div>
+      <div class="ref-item">Niantic. (2016). <em>Pokémon GO</em> [Mobile application]. Niantic, Inc.</div>
+      <div class="ref-item">TechCrunch. (2023, May 31). <em>A brief history of VR and AR.</em> <a href="https://techcrunch.com/2023/05/31/a-brief-history-of-vr-and-ar/">https://techcrunch.com/2023/05/31/a-brief-history-of-vr-and-ar/</a></div>
+      <div class="ref-item">Verizon. (2022, November 15). <em>What is VR, AR & XR? A guide to virtual, augmented and extended realities.</em> <a href="https://www.verizon.com/home/internet/guides/virtual-reality/">https://www.verizon.com/home/internet/guides/virtual-reality/</a></div>
+      <div class="ref-item">VR Expert. (2022). <em>The history of augmented reality (AR) and its future.</em> VRX by VR Expert. <a href="https://vrx.vr-expert.com/the-history-of-augmented-reality-ar-and-its-future/">https://vrx.vr-expert.com/the-history-of-augmented-reality-ar-and-its-future/</a></div>
+      <div class="ref-item">Zondervan. (2011). <em>The Holy Bible: New International Version.</em> Zondervan. (Original work published 1978)</div>
+    </div>
+  </div>
+</section>
+
+<!-- THANK YOU -->
+<div class="thankyou" id="thankyou">
+  <div class="thankyou-content">
+    <h2>Thank You!</h2>
+    <p>Any questions?</p>
+  </div>
+</div>
+
+<footer>
+  VR, AR, MR & XR — Final Presentation · Innovation & Technology · All rights reserved.
+</footer>
+
 </body>
 </html>
